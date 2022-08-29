@@ -136,7 +136,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     kaoyan_day = int(config["kaoyan_date"].split("-")[2])
     kaoyan_date = date(kaoyan_year, kaoyan_month, kaoyan_day)
     # 获取考研日期差
-    kaoyan_days = str(kaoyan_date.__sub__today).split(" ")[0]
+    kaoyan_days = str(kaoyan_date.__sub__(today)).split(" ")[0]
     # 获取所有生日数据
     birthdays = {}
     for k, v in config.items():
