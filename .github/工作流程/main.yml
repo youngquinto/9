@@ -1,0 +1,28 @@
+姓名：微信
+上：
+  工作流调度：
+  时间表：
+    #代表国际标准时间23点0分，北京时间需要+8小时，代表北京时间上午7点运行
+    - cron：' 0 23 * * * '
+工作：
+#将工作流程中运行的所有作业组合
+  构建：
+  #定义名为build的作业。子键定义作业的属性
+    运行：ubuntu-latest
+    步骤：
+      -使用：actions/checkout@v2
+    
+      -名称：设置 Python 3.11.0
+        使用：操作/设置-python@v2
+        与：
+          蟒蛇版本：3.11.0
+      -名称：设置时区
+        运行：|
+          cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+      -名称：安装 pip 包
+        运行：|
+          python -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+      -名称：微信
+        运行：|
+          python3 main.py
